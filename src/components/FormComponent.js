@@ -6,6 +6,8 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import ModalComponent from "./ModalComponent";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import ItemTable from "./ItemTable";
 
 function FormComponent() {
   const [validated, setValidated] = useState(false);
@@ -60,21 +62,6 @@ function FormComponent() {
     setValidated(true);
   };
 
-  /* useEffect(() => {
-    axios
-      .get("https://jsonplaceholder.typicode.com/users")
-      .then((response) => {
-        setData(response.data);
-        console.log(data);
-      })
-      .catch((error) => {
-        console.log(error);
-        setError(error);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  }); */
   return (
     <Form noValidate validated={validated} onSubmit={handleSubmit}>
       {loading && <LoadingComponent />}
@@ -196,6 +183,7 @@ function FormComponent() {
           </Form.Control.Feedback>
         </Form.Group>
       </Row>
+      <ItemTable setLoading={setLoading} />
       <Button className="btn btn-primary btn-large centerButton" type="submit">Guardar</Button>
     </Form>
   );
